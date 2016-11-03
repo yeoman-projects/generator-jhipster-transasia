@@ -26,7 +26,9 @@ npm update -g generator-jhipster-transasia
 ```
 
 # Usage
-
+```bash
+yo jhipster-transasia
+```
 # License
 
 MIT © [Oleg]

@@ -13,7 +13,8 @@ var jhipsterFunc = {};
 var STRIP_HTML = 'stripHtml',
     STRIP_JS = 'stripJs',
     COPY = 'copy',
-    TPL = 'template'
+    TPL = 'template',
+    VERSION_THEME='1.0'
 
 module.exports = yeoman.generators.Base.extend({
   initializing: {
@@ -27,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     displayLogo: function () {
-      this.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Transasia design') + ' Module! ' + chalk.yellow('v' + packagejs.version + '\n')));
+      this.log(chalk.white('Welcome to the ' + chalk.bold('JHipster Transasia theme') + ' Module! ' + chalk.yellow('v' + packagejs.version + '\n')));
     }
   },
   prompting: function () {
@@ -68,51 +69,46 @@ module.exports = yeoman.generators.Base.extend({
       jhipsterFunc.addBowerDependency('jquery-slimscroll', 'slimscroll#^1.3.8');
       jhipsterFunc.addBowerDependency('PACE', 'pace#^1.0.2');
       jhipsterFunc.addBowerDependency('animate.css', '^3.5.2');
-
-      //jhipsterFunc.addMainCSSStyle(this.useSass, style, 'Fix error field display')
+      jhipsterFunc.addBowerDependency('font-awesome', 'fontawesome#^4.7.0');
 
       // collect files to copy
       var files = [
         { from: this.webappDir + '/app/content/css/_transasia.css', to: this.webappDir + '/app/content/css/transasia.css'},
+        { from: this.webappDir + '/app/content/_main.html', to: this.webappDir + '/app/content/main.html'},
+        { from: this.webappDir + '/app/_favicon.ico', to: this.webappDir + '/app/favicon.ico'},
         { from: this.webappDir + '/app/directives/_directives.js', to: this.webappDir + '/app/directives/directives.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_sidebar.controller.js', to: this.webappDir + '/app/layouts/sidebar/sidebar.controller.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_active-link.directive.js', to: this.webappDir + '/app/layouts/sidebar/active-link.directive.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_active-menu.directive.js', to: this.webappDir + '/app/layouts/sidebar/active-menu.directive.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_sidebar.html', to: this.webappDir + '/app/layouts/sidebar/sidebar.html'},
+        { from: this.webappDir + '/app/content/js/_jquery-ui.custom.min.js', to: this.webappDir + '/app/content/js/jquery-ui.custom.min.js'},
         { from: this.webappDir + '/app/content/js/_inspinia.js', to: this.webappDir + '/app/content/js/inspinia.js'}
-        ,{ from: this.webappDir + '/app/_index.html', to: this.webappDir + '/app/index.html'}
       ];
       this.copyFiles(files);
     },
 
     updateClientSideFiles : function () {
-
-
-      jhipsterFunc.rewriteFile(this.webappDir + '/index.html', '<!-- build:css content/css/main.css -->',
-        '<!-- placeholder link to load transasia style, title holds the current applied theme name-->\n' +
-        '<link href="bower_components/animate.css/animate.css" rel="stylesheet">\n ' +
-        '<link href="content/css/transasia.css" rel="stylesheet">\n ');
+      jhipsterFunc.rewriteFile(this.webappDir + '/index.html', '<!-- build:css content/css/main.css --> ',
+        '<!-- placeholder link to load transasia style, title holds the current applied theme name-->\n ' +
+        ' <link href="bower_components/animate.css/animate.css" rel="stylesheet">\n  ' +
+        ' <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">\n ' +
+        ' <link id="loadBefore" href="content/css/transasia.css" rel="stylesheet">\n ');
 
       var html = this.fs.read(this.webappDir + '/index.html');
+      var content =  this.fs.read(this.webappDir + '/content/main.html');
+      var css =  this.fs.read(this.webappDir + '/content/css/transasia.css');
 
-
-
-      //-----parse DOM in index.html -------
-      // CSS selectors ot Xpath
+      // CSS selectors or Xpath to navigate DOM
       var $ = cheerio.load(html);
+      var body = $('body');
+      body.html(content);
 
-      var footer = $('.footer');
-
-      footer.append('<div id="wraper"></div>\n ' +
-        '<div>btl 2016</div>\n');
-
+      //var footer = $('.footer');
+      //footer.append('<b>btl theme '+VERSION_THEME+'</b>\n ');
       this.fs.write(this.webappDir + '/index.html', $.html());
 
-     //var indexFullPath = 'src/main/webapp/app/index.html';
-      //var file = fs.readFileSync(indexFullPath , 'utf8');
-     // file = file.replace(/ui-view="navbar"/g, 'sidebar');
-      //file = file.replace(/class="dropdown-toggle" data-toggle="dropdown"/g, 'dropdown-toggle');
-     // fs.writeFileSync(indexFullPath , file);
+      jhipsterFunc.addMainCSSStyle(this.useSass, css, 'Transasia style');
+
     }
   },
   install: function () {
@@ -123,6 +119,7 @@ module.exports = yeoman.generators.Base.extend({
     };
 
     var injectDependenciesAndConstants = function () {
+      this.log('\n' + chalk.bold.green('Running gulp install to add css and js dependencies to index\n'));
       this.spawnCommand('gulp', ['install']);
     };
 
