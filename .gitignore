@@ -1,0 +1,9 @@
+node_modules
+coverage
+.idea
+*.iml
+atlassian-ide-plugin.xml
+/.project
+test/temp/
+npm-debug.log
+static/

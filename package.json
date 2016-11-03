@@ -1,0 +1,57 @@
+{
+  "name": "generator-jhipster-transasia",
+  "version": "0.0.1",
+  "description": "Ifispinia web interface",
+  "keywords": [
+    "yeoman-generator",
+    "jhipster-module"
+  ],
+  "homepage": "https://github.com/Oleg25/generator-jhipster-transasia",
+  "author": {
+    "name": "Oleg",
+    "email": "velmisoff123@gmail.com",
+    "url": "localhost"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oleg25/generator-jhipster-transasia.git"
+  },
+  "dependencies": {
+    "yeoman-generator": "0.22.4",
+    "chalk": "1.1.1",
+    "yosay": "1.0.2",
+    "cheerio": "^0.20.0",
+    "mkdirp": "0.5.1",
+    "generator-jhipster": ">2.26.0"
+  },
+  "devDependencies": {
+    "fs-extra": "0.26.4",
+    "gulp": "^3.9.0",
+    "gulp-bump": "1.0.0",
+    "gulp-eslint": "1.0.0",
+    "gulp-exclude-gitignore": "1.0.0",
+    "gulp-git": "1.6.1",
+    "gulp-istanbul": "0.10.3",
+    "gulp-mocha": "2.2.0",
+    "gulp-nsp": "2.3.0",
+    "gulp-plumber": "1.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-sequence": "0.4.4",
+    "gulp-shell": "^0.5.1",
+    "mocha": "2.3.4",
+    "yeoman-assert": "2.1.1",
+    "yeoman-test": "1.0.0"
+  },
+  "scripts": {
+    "prepublish": "gulp prepublish",
+    "test": "mocha test/*"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Oleg25/generator-jhipster-transasia/issues"
+  }
+}
