@@ -4,11 +4,25 @@
       <span minimaliza-sidebar></span>
       <form role="search" class="navbar-form-custom" method="post" action="">
         <div class="form-group">
-          <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+          <input type="text" placeholder="Поиск..." class="form-control" name="top-search" id="top-search">
         </div>
       </form>
     </div>
     <ul class="nav navbar-top-links navbar-right">
+      <li ui-sref-active="active" uib-dropdown class="dropdown pointer" ng-controller="JhiLanguageController as languageVm">
+        <a class="dropdown-toggle" uib-dropdown-toggle href="" ng-if="languageVm.languages.length > 1">
+                        <span>
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <span class="hidden-sm" data-translate="global.menu.language">Language</span>
+                            <b class="caret"></b>
+                        </span>
+        </a>
+        <ul class="dropdown-menu" uib-dropdown-menu ng-if="languageVm.languages.length > 1">
+          <li active-menu="{{language}}" ng-repeat="language in languageVm.languages">
+            <a href="" ng-click="languageVm.changeLanguage(language);vm.collapseNavbar();">{{language | findLanguageFromKey}}</a>
+          </li>
+        </ul>
+      </li>
       <li>
         <a href="">
           <i class="fa fa-sign-out"></i> Log out

@@ -2,14 +2,16 @@
     <div class="sidebar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
-                <div class="profile-element" uib-dropdown>
+                <div class="profile-element" uib-dropdown ng-switch="vm.isAuthenticated()">
                     <a uib-dropdown-toggle href>
                             <span class="clear">
                                 <span class="block m-t-xs">
-                                    <strong class="font-bold">Test User</strong>
-                             </span>
+                               <strong ng-switch-when="true" class="font-bold">
+                                   {{vm.account.login}}
+                               </strong>
+                       </span>
                                 <span class="text-muted text-xs block">IT department<b class="caret"></b></span>
-                            </span>
+                       </span>
                     </a>
                     <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
                         <li><a ui-sref="app.profile">Profile</a></li>
@@ -30,6 +32,7 @@
                         </li>
                     </ul>
                  </div>
+
                 <div class="logo-element">
                     BTL+
                 </div>

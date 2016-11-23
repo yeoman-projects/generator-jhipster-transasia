@@ -1,3 +1,4 @@
+<body ng-app="<%=angularAppName%>">
 <page-ribbon></page-ribbon>
 <div id="wrapper">
   <div ui-view="sidebar" ng-cloak=""></div>
@@ -5,22 +6,16 @@
 
     <div ui-view="topnavbar" ng-cloak=""></div>
 
-    <div class="row wrapper border-bottom white-bg page-heading">
-      <div class="col-lg-8">
-        <h2>Home</h2>
-        <ol class="breadcrumb">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-        </ol>
+    <br />
+    <div class="container">
+      <div class="well" ui-view="content">
+        <!-- Angular views -->
+      </div>
+
+      <div class="footer" ng-cloak>
+        <span class="navbar-version">v{{VERSION}}</span>
       </div>
     </div>
-
-     <div class="wrapper wrapper-content">
-       <div class="well" ui-view="content">
-        <!-- Angular views -->
-       </div>
-     </div>
   </div>
 
 </div>
@@ -35,7 +30,6 @@
 <!-- inject:js -->
 <!-- endinject -->
 <!-- endbuild -->
-
 
 <noscript>
   <style type="text/css">

@@ -5,12 +5,17 @@
         .module('<%=angularAppName%>')
         .controller('SideBarController', SideBarController);
 
-    SideBarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    SideBarController.$inject = ['$scope','$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
 
-    function SideBarController ($state, Auth, Principal, ProfileService, LoginService) {
+    function SideBarController ($scope,$state, Auth, Principal, ProfileService, LoginService) {
         var vm = this;
 
+
+        vm.account = null;
         vm.isAuthenticated = Principal.isAuthenticated;
+
+
+
 
         ProfileService.getProfileInfo().then(function(response) {
             vm.inProduction = response.inProduction;
@@ -23,6 +28,8 @@
         vm.collapseSidebar = collapseSidebar;
 
         vm.$state = $state;
+
+        vm.login = LoginService.open;
 
         function login()   {
             collapseSidebar();
@@ -42,6 +49,18 @@
         function collapseSidebar() {
             vm.isSidebarCollapsed = true;
         }
+
+      getAccount();
+
+      function getAccount() {
+        Principal.identity().then(function(account) {
+          vm.account = account;
+          vm.isAuthenticated = Principal.isAuthenticated;
+        });
+      }
+      function register () {
+        $state.go('register');
+      }
 
 
     }

@@ -160,46 +160,25 @@ module.exports = yeoman.generators.Base.extend({
       jhipsterFunc.addBowerDependency('animate.css', '^3.5.2');
       jhipsterFunc.addBowerDependency('font-awesome', 'fontawesome#^4.7.0');
       jhipsterFunc.addBowerDependency('arrive', '2.3.0');
-      jhipsterFunc.addBowerDependency('bootstrap-material-design', '0.5.10');
+      //jhipsterFunc.addBowerDependency('bootstrap-material-design', '0.5.10');
 
       // collect files to copy
       var files = [
         { from: this.webappDir + '/app/_favicon.ico', to: this.webappDir + '/app/favicon.ico'},
-
-        { from: this.webappDir + '/scss/patterns/_header-profile.png', to: this.webappDir + '/scss/patterns/header-profile.png'},
-       // { from: this.webappDir + '/scss/patterns/_shattered.png', to: this.webappDir + '/scss/patterns/shattered.png'},
-       // { from: this.webappDir + '/scss/_badgets_labels.scss', to: this.webappDir + '/scss/badgets_labels.scss'},
-        //{ from: this.webappDir + '/scss/_base.scss', to: this.webappDir + '/scss/base.scss'},
-        //{ from: this.webappDir + '/scss/_buttons.scss', to: this.webappDir + '/scss/buttons.scss'},
-        //{ from: this.webappDir + '/scss/_custom.scss', to: this.webappDir + '/scss/custom.scss'},
-        //{ from: this.webappDir + '/scss/_elements.scss', to: this.webappDir + '/scss/elements.scss'},
-        /*{ from: this.webappDir + '/scss/_media.scss', to: this.webappDir + '/scss/media.scss'},
-        { from: this.webappDir + '/scss/_metismenu.scss', to: this.webappDir + '/scss/metismenu.scss'},
-        { from: this.webappDir + '/scss/_pages.scss', to: this.webappDir + '/scss/pages.scss'},
-        { from: this.webappDir + '/scss/_sidebar.scss', to: this.webappDir + '/scss/sidebar.scss'},
-        { from: this.webappDir + '/scss/_spinners.scss', to: this.webappDir + '/scss/spinners.scss'},
-        { from: this.webappDir + '/scss/_top_navigation.scss', to: this.webappDir + '/scss/top_navigation.scss'},
-        { from: this.webappDir + '/scss/_typography.scss', to: this.webappDir + '/scss/typography.scss'},
-        { from: this.webappDir + '/scss/_variables.scss', to: this.webappDir + '/scss/variables.scss'},*/
-
+        { from: this.webappDir + '/content/css/patterns/_header-profile.png', to: this.webappDir + '/content/css/patterns/header-profile.png'},
         { from: this.webappDir + '/scss/_main.scss', to: this.webappDir + '/scss/main.scss'},
         { from: this.webappDir + '/app/_app.state.js', to: this.webappDir + '/app/app.state.js'},
-
         { from: this.webappDir + '/app/blocks/config/_html5.mode.config.js', to: this.webappDir + '/app/blocks/config/html5.mode.config.js'},
-        //{ from: this.webappDir + '/app/directives/_directives.js', to: this.webappDir + '/app/directives/directives.js'},
-
         { from: this.webappDir + '/app/layouts/sidebar/_sidebar.controller.js', to: this.webappDir + '/app/layouts/sidebar/sidebar.controller.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_active-link.directive.js', to: this.webappDir + '/app/layouts/sidebar/active-link.directive.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_active-menu.directive.js', to: this.webappDir + '/app/layouts/sidebar/active-menu.directive.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_sidebar.html', to: this.webappDir + '/app/layouts/sidebar/sidebar.html'},
-
         { from: this.webappDir + '/app/layouts/topnavbar/_topnavbar.controller.js', to: this.webappDir + '/app/layouts/topnavbar/topnavbar.controller.js'},
         { from: this.webappDir + '/app/layouts/topnavbar/_topnavbar.directive.js', to: this.webappDir + '/app/layouts/topnavbar/topnavbar.directive.js'},
         { from: this.webappDir + '/app/layouts/topnavbar/_topnavbar.html', to: this.webappDir + '/app/layouts/topnavbar/topnavbar.html'},
+        { from: this.webappDir + '/app/home/_home.html', to: this.webappDir + '/app/home/home.html'},
         { from: this.webappDir + '/app/content/_main.html', to: this.webappDir + '/app/content/main.html'},
-        { from: this.webappDir + '/app/content/js/_inspinia.js', to: this.webappDir + '/app/content/js/_inspinia.js'},
-        { from: this.webappDir + '/content/css/_old.main.css', to: this.webappDir + '/content/css/old.main.css'}
-        //{ from: this.webappDir + '/content/css/_main.css', to: this.webappDir + '/content/css/transasia.css'}
+        { from: this.webappDir + '/app/content/js/_inspinia.js', to: this.webappDir + '/app/content/js/_inspinia.js'}
       ];
       this.copyFiles(files);
     },
@@ -226,6 +205,7 @@ module.exports = yeoman.generators.Base.extend({
         head.append('<base id="html5mode" href="/">');
       }
 
+
       body.html(content);
 
       var footer = $('.footer');
@@ -248,10 +228,9 @@ module.exports = yeoman.generators.Base.extend({
       this.spawnCommand('gulp', ['install']);
     };
 
-
     var compileSAAS = function () {
-       this.log('\n' + chalk.bold.green('Running gulp styles\n'));
-      this.spawnCommand('gulp', ['styles']);
+       this.log( chalk.bold.green('Running gulp styles\n'));
+       this.spawnCommand('gulp', ['styles']);
     };
 
 
@@ -270,6 +249,6 @@ module.exports = yeoman.generators.Base.extend({
   },
   end: function() {
     //this.log(chalk.bold.red('You will need to install the sqljdbc42.jar locally.'));
-    this.log(chalk.green.bold('\n Transasia Theme installed successfully.\n'));
+    this.log(chalk.green.bold('Transasia Theme installed successfully.\n'));
    }
 });
