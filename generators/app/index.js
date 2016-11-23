@@ -168,7 +168,6 @@ module.exports = yeoman.generators.Base.extend({
 
         { from: this.webappDir + '/scss/patterns/_header-profile.png', to: this.webappDir + '/scss/patterns/header-profile.png'},
        // { from: this.webappDir + '/scss/patterns/_shattered.png', to: this.webappDir + '/scss/patterns/shattered.png'},
-
        // { from: this.webappDir + '/scss/_badgets_labels.scss', to: this.webappDir + '/scss/badgets_labels.scss'},
         //{ from: this.webappDir + '/scss/_base.scss', to: this.webappDir + '/scss/base.scss'},
         //{ from: this.webappDir + '/scss/_buttons.scss', to: this.webappDir + '/scss/buttons.scss'},
@@ -183,7 +182,7 @@ module.exports = yeoman.generators.Base.extend({
         { from: this.webappDir + '/scss/_typography.scss', to: this.webappDir + '/scss/typography.scss'},
         { from: this.webappDir + '/scss/_variables.scss', to: this.webappDir + '/scss/variables.scss'},*/
 
-        { from: this.webappDir + '/scss/_main.scss', to: this.webappDir + '/scss/main.scss'},
+        { from: this.webappDir + '/scss/_main.scss', to: this.webappDir + '/scss/transasia.scss'},
         { from: this.webappDir + '/app/_app.state.js', to: this.webappDir + '/app/app.state.js'},
 
         { from: this.webappDir + '/app/blocks/config/_html5.mode.config.js', to: this.webappDir + '/app/blocks/config/html5.mode.config.js'},
@@ -197,8 +196,6 @@ module.exports = yeoman.generators.Base.extend({
         { from: this.webappDir + '/app/layouts/topnavbar/_topnavbar.controller.js', to: this.webappDir + '/app/layouts/topnavbar/topnavbar.controller.js'},
         { from: this.webappDir + '/app/layouts/topnavbar/_topnavbar.directive.js', to: this.webappDir + '/app/layouts/topnavbar/topnavbar.directive.js'},
         { from: this.webappDir + '/app/layouts/topnavbar/_topnavbar.html', to: this.webappDir + '/app/layouts/topnavbar/topnavbar.html'},
-
-       // { from: this.webappDir + '/app/content/js/_jquery-ui.custom.min.js', to: this.webappDir + '/app/content/js/jquery-ui.custom.min.js'},
         { from: this.webappDir + '/app/content/_main.html', to: this.webappDir + '/app/content/main.html'},
         { from: this.webappDir + '/app/content/js/_inspinia.js', to: this.webappDir + '/app/content/js/_inspinia.js'},
         { from: this.webappDir + '/content/css/_old.main.css', to: this.webappDir + '/content/css/old.main.css'}
@@ -210,9 +207,6 @@ module.exports = yeoman.generators.Base.extend({
 
       this.frontendBuilder = jhipsterVar.frontendBuilder;
       this.useSass = jhipsterVar.useSass;
-
-     // var style2 = this.fs.read(this.webappDir + 'app/content/css/transasia.css');
-      //jhipsterFunc.addMainCSSStyle(this.useSass, style2, 'Transasia theme v3');
 
       jhipsterFunc.rewriteFile(this.webappDir + 'index.html', '<!-- build:css content/css/main.css --> ',
         '<!-- placeholder link to load Transasia need style, title holds the current applied theme name-->\n ' +
@@ -267,8 +261,9 @@ module.exports = yeoman.generators.Base.extend({
     });
 
    if (!this.options['skip-install'] && !this.skipClient) {
-      injectJsFilesToIndex.call(this);
-      //if (this.useSass) compileSAAS.call(this);
+       compileSAAS.call(this);
+       injectJsFilesToIndex.call(this);
+
     }
 
   },
