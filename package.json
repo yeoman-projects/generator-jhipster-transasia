@@ -26,7 +26,7 @@
     "yosay": "1.0.2",
     "cheerio": "^0.20.0",
     "mkdirp": "0.5.1",
-    "generator-jhipster": ">2.26.0"
+    "generator-jhipster": ">=3.0.0"
   },
   "devDependencies": {
     "fs-extra": "0.26.4",

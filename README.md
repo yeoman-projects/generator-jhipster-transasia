@@ -26,13 +26,14 @@ npm update -g generator-jhipster-transasia
 ```
 
 # Usage
+Yuo must answer Yes on rewrite conflict! NOT a (all)
 ```bash
 yo jhipster-transasia
 ```
+
+
 # License
-
 MIT © [Oleg]
-
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-transasia.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-transasia
