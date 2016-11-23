@@ -19,29 +19,29 @@
 
     vm.login = login;
     vm.logout = logout;
-    vm.toggleSidebar = toggleSidebar;
-    vm.collapseSidebar = collapseSidebar;
+    //vm.toggleSidebar = toggleSidebar;
+   // vm.collapseSidebar = collapseSidebar;
 
     vm.$state = $state;
 
     function login()   {
-      collapseSidebar();
+    //  collapseSidebar();
       LoginService.open();
     }
 
     function logout() {
-      collapseSidebar();
+     // collapseSidebar();
       Auth.logout();
       $state.go('home');
     }
 
-    function toggleSidebar() {
-      vm.isSidebarCollapsed = !vm.isSidebarCollapsed;
-    }
+    //function toggleSidebar() {
+     // vm.isSidebarCollapsed = !vm.isSidebarCollapsed;
+    //}
 
-    function collapseSidebar() {
-      vm.isSidebarCollapsed = true;
-    }
+    //function collapseSidebar() {
+     // vm.isSidebarCollapsed = true;
+    //}
 
   }
 })();

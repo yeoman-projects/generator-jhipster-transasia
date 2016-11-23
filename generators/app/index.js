@@ -77,7 +77,7 @@ module.exports = yeoman.generators.Base.extend({
 
 
       // Add AngularJs config
-     // jhipsterFunc.copyTemplate(this.webappDir + '/app/content/css/_transasia.css', this.webappDir + '/app/content/css/transasia.css', 'template', this, null, true);
+     // jhipsterFunc.copyTemplate(this.webappDir + '/app/content/css/_main.css', this.webappDir + '/app/content/css/transasia.css', 'template', this, null, true);
 
 
 
@@ -182,11 +182,11 @@ module.exports = yeoman.generators.Base.extend({
         { from: this.webappDir + '/scss/_typography.scss', to: this.webappDir + '/scss/typography.scss'},
         { from: this.webappDir + '/scss/_variables.scss', to: this.webappDir + '/scss/variables.scss'},*/
 
-        { from: this.webappDir + '/scss/_main.scss', to: this.webappDir + '/scss/transasia.scss'},
+        { from: this.webappDir + '/scss/_main.scss', to: this.webappDir + '/scss/main.scss'},
         { from: this.webappDir + '/app/_app.state.js', to: this.webappDir + '/app/app.state.js'},
 
         { from: this.webappDir + '/app/blocks/config/_html5.mode.config.js', to: this.webappDir + '/app/blocks/config/html5.mode.config.js'},
-        { from: this.webappDir + '/app/directives/_directives.js', to: this.webappDir + '/app/directives/directives.js'},
+        //{ from: this.webappDir + '/app/directives/_directives.js', to: this.webappDir + '/app/directives/directives.js'},
 
         { from: this.webappDir + '/app/layouts/sidebar/_sidebar.controller.js', to: this.webappDir + '/app/layouts/sidebar/sidebar.controller.js'},
         { from: this.webappDir + '/app/layouts/sidebar/_active-link.directive.js', to: this.webappDir + '/app/layouts/sidebar/active-link.directive.js'},
@@ -199,6 +199,7 @@ module.exports = yeoman.generators.Base.extend({
         { from: this.webappDir + '/app/content/_main.html', to: this.webappDir + '/app/content/main.html'},
         { from: this.webappDir + '/app/content/js/_inspinia.js', to: this.webappDir + '/app/content/js/_inspinia.js'},
         { from: this.webappDir + '/content/css/_old.main.css', to: this.webappDir + '/content/css/old.main.css'}
+        //{ from: this.webappDir + '/content/css/_main.css', to: this.webappDir + '/content/css/transasia.css'}
       ];
       this.copyFiles(files);
     },
