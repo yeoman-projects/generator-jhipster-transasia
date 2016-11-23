@@ -270,6 +270,7 @@ module.exports = yeoman.generators.Base.extend({
       injectJsFilesToIndex.call(this);
       //if (this.useSass) compileSAAS.call(this);
     }
+
   },
   end: function() {
     //this.log(chalk.bold.red('You will need to install the sqljdbc42.jar locally.'));
